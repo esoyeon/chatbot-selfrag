@@ -5,7 +5,7 @@
 ## 🏗️ **전체 구조**
 
 ```
-llm_chatbot/
+open-webui-rag-docker/
 ├── 📚 **Core Modules**
 │   ├── adaptive_rag/           # 🧠 메인 RAG 엔진 (LangGraph 기반)
 │   ├── document_processing/    # 📄 문서 처리 모듈

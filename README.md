@@ -1,6 +1,8 @@
-# 🤖 Open WebUI + 자체 RAG 시스템 통합 프로젝트
+# 🤖 Open WebUI + 자체 RAG 시스템 통합 프로젝트 (Docker)
 
-> **Open WebUI를 자체 데이터베이스, RAG, Embedding API와 완벽 통합하는 실전 가이드**
+> **Docker를 사용하여 Open WebUI를 자체 데이터베이스, RAG, Embedding API와 완벽 통합하는 실전 가이드**
+
+> **🔗 관련 프로젝트**: [Native 버전](https://github.com/esoyeon/open-webui-rag-native) - Docker 없이 직접 환경 구성
 
 [![Python](https://img.shields.io/badge/Python-3.11+-blue.svg)](https://www.python.org/)
 [![LangChain](https://img.shields.io/badge/LangChain-0.3.27-green.svg)](https://langchain.com/)
@@ -9,9 +11,10 @@
 
 ## 🎯 **프로젝트 목적**
 
-이 프로젝트는 **Open WebUI**를 자체적인 RAG(Retrieval-Augmented Generation) 시스템과 통합하는 **완전한 방법론**을 제공합니다.
+이 프로젝트는 **Docker를 사용하여** Open WebUI를 자체적인 RAG(Retrieval-Augmented Generation) 시스템과 통합하는 **완전한 방법론**을 제공합니다.
 
 ### **핵심 가치**
+- 🐳 **Docker 기반**: 컨테이너를 통한 간편하고 일관된 환경 구성
 - 🔧 **실용적 가이드**: 실제 동작하는 코드와 단계별 설명
 - 🏗️ **확장 가능한 아키텍처**: 다른 프로젝트에 쉽게 적용 가능
 - 🇰🇷 **한국어 최적화**: 한국 사용자를 위한 완벽한 한국어 지원
@@ -63,11 +66,18 @@ graph TB
 
 ## 🚀 **빠른 시작**
 
-### **1단계: 환경 설정**
+### **1단계: Docker 설치**
+```bash
+# Docker Desktop 설치 확인
+docker --version
+docker-compose --version
+```
+
+### **2단계: 프로젝트 클론**
 ```bash
 # 저장소 클론
-git clone <your-repo>
-cd llm_chatbot
+git clone https://github.com/esoyeon/open-webui-rag-docker.git
+cd open-webui-rag-docker
 
 # 가상환경 생성 (uv 권장)
 uv venv
@@ -77,7 +87,7 @@ source .venv/bin/activate
 uv pip install -e .
 ```
 
-### **2단계: API 키 설정**
+### **3단계: API 키 설정**
 ```bash
 # .env 파일 생성
 cp env_example.txt .env
@@ -87,7 +97,7 @@ cp env_example.txt .env
 # TAVILY_API_KEY=tvly-your-key...
 ```
 
-### **3단계: 문서 인덱싱**
+### **4단계: 문서 인덱싱**
 ```bash
 # PDF 문서를 data/ 폴더에 추가
 cp your-documents.pdf data/
@@ -96,15 +106,15 @@ cp your-documents.pdf data/
 python scripts/index_documents.py --docs-dir data --force-rebuild
 ```
 
-### **4단계: 시스템 실행**
+### **5단계: Docker로 시스템 실행**
 ```bash
-# 전체 시스템 자동 실행
+# 전체 시스템 자동 실행 (Docker)
 python scripts/start_webui_integration.py --mode api
 
 # 브라우저에서 http://localhost:3000 접속
 ```
 
-### **5단계: 백엔드 연결 (Web UI에서)**
+### **6단계: 백엔드 연결 (Web UI에서)**
 - **Admin Panel** → **Connections** → **OpenAI API**
 - **API Base URL**: `http://host.docker.internal:8000/v1`
 - **API Key**: `sk-dummy-key` (아무 값)
@@ -145,7 +155,7 @@ python scripts/start_webui_integration.py --mode api
 ## 📁 **프로젝트 구조**
 
 ```
-llm_chatbot/
+open-webui-rag-docker/
 ├── 📄 README.md                    # 메인 문서 (이 파일)
 ├── 📋 INTEGRATION_GUIDE.md         # Open WebUI 통합 완전 가이드  
 ├── 🛠️ METHODOLOGY.md              # 다른 프로젝트 적용 방법론
@@ -183,6 +193,12 @@ llm_chatbot/
 ---
 
 ## 🎯 **주요 특징**
+
+### **🐳 Docker 기반 환경**
+- **간편한 설정**: Docker Compose로 원클릭 실행
+- **환경 일관성**: 모든 환경에서 동일한 동작 보장
+- **의존성 관리**: 복잡한 환경 설정 없이 바로 시작
+- **확장성**: 마이크로서비스 아키텍처 지원
 
 ### **🧠 고도화된 RAG**
 - **Adaptive 워크플로우**: 실패 시 자동 재시도 및 개선
@@ -268,24 +284,38 @@ RECURSION_LIMIT = 50      # LangGraph 재귀 한계
 
 ## 🎉 **결론**
 
-이 프로젝트는 **Open WebUI와 자체 RAG 시스템을 통합**하는 완전한 해결책을 제공합니다. 단순한 예제가 아닌, **실제 운영 환경에서 사용 가능한 완성된 시스템**입니다.
+이 프로젝트는 **Docker를 사용하여** Open WebUI와 자체 RAG 시스템을 통합하는 완전한 해결책을 제공합니다. 단순한 예제가 아닌, **실제 운영 환경에서 사용 가능한 완성된 시스템**입니다.
 
 **특히 다음과 같은 경우에 매우 유용합니다:**
 - 🏢 회사 내부 문서를 기반으로 한 AI 챗봇 구축
 - 🎓 연구 논문이나 보고서 기반 질의응답 시스템  
 - 📚 특정 도메인 지식 기반 전문 AI 어시스턴트
 - 🌐 Open WebUI의 기본 기능을 자체 데이터로 확장
+- 🐳 Docker 환경에서 안정적인 서비스 운영
 
 ### **시작해보세요!**
 ```bash
-# 한 줄로 전체 시스템 실행
+# Docker로 전체 시스템 실행
 python scripts/start_webui_integration.py --mode api
 
 # 브라우저에서 http://localhost:3000 접속
 # 백엔드 설정: http://host.docker.internal:8000/v1
 ```
 
-**🎯 5분 안에 자신만의 AI 챗봇을 완성할 수 있습니다!**
+**🎯 Docker만 설치하면 5분 안에 자신만의 AI 챗봇을 완성할 수 있습니다!**
+
+### **Docker vs Docker-Free 선택 가이드**
+
+| 구분 | Docker 버전 | Native 버전 |
+|------|-------------|------------------|
+| **설정 복잡도** | ⭐⭐ (간단) | ⭐⭐⭐⭐ (복잡) |
+| **환경 일관성** | ⭐⭐⭐⭐⭐ (완벽) | ⭐⭐⭐ (좋음) |
+| **학습 효과** | ⭐⭐ (낮음) | ⭐⭐⭐⭐⭐ (높음) |
+| **운영 환경** | ⭐⭐⭐⭐⭐ (완벽) | ⭐⭐⭐ (좋음) |
+| **디버깅** | ⭐⭐ (어려움) | ⭐⭐⭐⭐ (쉬움) |
+
+**🐳 Docker 버전**: 빠른 시작과 안정적인 운영이 필요한 경우
+**🔧 Native 버전**: 시스템 동작 원리를 학습하고 커스터마이징이 필요한 경우
 
 ---
 

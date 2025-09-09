@@ -10,7 +10,7 @@ OPENAI_API_KEY=sk-your-actual-openai-api-key-here
 LANGSMITH_TRACING=true
 LANGSMITH_ENDPOINT=https://api.smith.langchain.com
 LANGSMITH_API_KEY=lsv2_pt_your-langsmith-api-key
-LANGSMITH_PROJECT=LLM_Chatbot
+LANGSMITH_PROJECT=open-webui-rag-docker
 
 # Tavily 웹 검색 (선택사항) - 실시간 정보 검색
 TAVILY_API_KEY=tvly-your-tavily-api-key

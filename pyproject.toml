@@ -1,7 +1,7 @@
 [project]
-name = "LLM_Chatbot"
+name = "open-webui-rag-docker"
 version = "1.0.0"
-description = "한국어 지원 Adaptive RAG + Open WebUI 통합 AI 챗봇 시스템"
+description = "Docker 기반 한국어 지원 Adaptive RAG + Open WebUI 통합 AI 챗봇 시스템"
 readme = "README.md"
 requires-python = ">=3.11"
 authors = [

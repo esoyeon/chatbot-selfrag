@@ -15,7 +15,7 @@
 
 ```bash
 # 1. 저장소 클론 후 이동
-cd llm_chatbot
+cd open-webui-rag-docker
 
 # 2. 가상환경 설정
 uv venv && source .venv/bin/activate && uv pip install -e .
